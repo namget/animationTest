@@ -22,5 +22,10 @@ class SelectActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        startGradient.setOnClickListener {
+            val intent = Intent(this, GradationActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

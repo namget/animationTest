@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".SeekbarActivity">
         </activity>
+        <activity android:name=".GradationActivity">
+        </activity>
 
     </application>
 
