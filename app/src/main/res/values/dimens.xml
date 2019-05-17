@@ -3,5 +3,5 @@
     <!--dot items-->
     <dimen name="dot_width">25dp</dimen>
     <dimen name="dot_width_half">12.5dp</dimen>
-    <dimen name="line_width">15dp</dimen>
+    <dimen name="line_width">4dp</dimen>
 </resources>

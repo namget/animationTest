@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.namget.customline.data.CurrentData
+import com.namget.customline.data.LineData
+import com.namget.customline.data.LineItemInterface
+import com.namget.customline.data.destinData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

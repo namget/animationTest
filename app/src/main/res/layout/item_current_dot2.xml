@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+
+        <View
+                android:id="@+id/currentDot3"
+                android:layout_width="@dimen/dot_width"
+                android:layout_height="@dimen/dot_width"
+                android:alpha="0.3"
+                android:background="@drawable/item_current_circle_drawable_outside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+        </View>
+
+        <View
+                android:id="@+id/currentDot2"
+                android:layout_width="@dimen/dot_width"
+                android:layout_height="@dimen/dot_width"
+                android:alpha="0.7"
+                android:background="@drawable/item_current_circle_drawable_inside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+        </View>
+
+        <View
+                android:id="@+id/currentDot"
+                android:layout_width="@dimen/dot_width"
+                android:layout_height="@dimen/dot_width"
+                android:background="@drawable/item_current_circle_drawable"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+        </View>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

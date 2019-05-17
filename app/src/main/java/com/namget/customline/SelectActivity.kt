@@ -27,5 +27,11 @@ class SelectActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        startLine.setOnClickListener {
+            val intent = Intent(this, LineActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

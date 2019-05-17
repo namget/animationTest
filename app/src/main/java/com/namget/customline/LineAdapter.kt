@@ -8,6 +8,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.namget.customline.data.CurrentData
+import com.namget.customline.data.LineData
+import com.namget.customline.data.LineItemInterface
+import com.namget.customline.data.destinData
 import com.namget.customline.databinding.ItemCurrentDotBinding
 import com.namget.customline.databinding.ItemDestionationDotBinding
 import com.namget.customline.databinding.ItemLineBinding
