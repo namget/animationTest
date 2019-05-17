@@ -1,4 +1,4 @@
-package com.namget.customline
+package com.namget.customline.line
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.namget.customline.R
 import com.namget.customline.data.LineData
 import com.namget.customline.data.LineItemInterface
 import com.namget.customline.data.destinData

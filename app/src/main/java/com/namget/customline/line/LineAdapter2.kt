@@ -1,4 +1,4 @@
-package com.namget.customline
+package com.namget.customline.line
 
 import android.os.Handler
 import android.util.Log
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.namget.customline.R
 import com.namget.customline.data.CurrentData
 import com.namget.customline.data.LineData
 import com.namget.customline.data.LineItemInterface
@@ -28,7 +29,8 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
         fun changeLength()
     }
 
-    class LineHolder(val view: ItemLineBinding) : RecyclerView.ViewHolder(view.root), ViewHolderInf {
+    class LineHolder(val view: ItemLineBinding) : RecyclerView.ViewHolder(view.root),
+        ViewHolderInf {
         var distance = 0
         val distanceMinus = 10
 
@@ -97,7 +99,7 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
                     parent,
                     false
                 )
-                return LineAdapter2.LineHolder(view)
+                return LineHolder(view)
             }
             TYPE_DESTIN_DOT -> {
                 val view: ItemDestionationDotBinding = DataBindingUtil.inflate(
@@ -106,7 +108,7 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
                     parent,
                     false
                 )
-                return LineAdapter2.DetinationDotHolder(view)
+                return DetinationDotHolder(view)
 
             }
             else -> {

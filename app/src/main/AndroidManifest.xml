@@ -16,13 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
         </activity>
-        <activity android:name=".SeekbarActivity">
+        <activity android:name=".seekbar.SeekbarActivity">
         </activity>
-        <activity android:name=".GradationActivity">
+        <activity android:name=".gradation.GradationActivity">
         </activity>
-        <activity android:name=".LineActivity">
+        <activity android:name=".line.LineActivity">
+        </activity>
+        <activity android:name=".scroll.ScrollActivity">
         </activity>
 
     </application>

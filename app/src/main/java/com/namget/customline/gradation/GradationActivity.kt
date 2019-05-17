@@ -1,4 +1,4 @@
-package com.namget.customline
+package com.namget.customline.gradation
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.namget.customline.R
 import kotlinx.android.synthetic.main.activity_gradient.*
 
 

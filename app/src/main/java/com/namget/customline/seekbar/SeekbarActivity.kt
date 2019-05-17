@@ -1,8 +1,9 @@
-package com.namget.customline
+package com.namget.customline.seekbar
 
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import com.namget.customline.R
 import kotlinx.android.synthetic.main.activity_seekbar.*
 
 class SeekbarActivity : AppCompatActivity() {

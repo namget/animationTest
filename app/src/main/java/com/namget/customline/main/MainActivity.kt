@@ -1,9 +1,11 @@
-package com.namget.customline
+package com.namget.customline.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.namget.customline.LineAdapter
+import com.namget.customline.R
 import com.namget.customline.data.CurrentData
 import com.namget.customline.data.LineData
 import com.namget.customline.data.LineItemInterface

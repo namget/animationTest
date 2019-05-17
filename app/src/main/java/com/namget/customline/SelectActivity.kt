@@ -3,6 +3,11 @@ package com.namget.customline
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.namget.customline.gradation.GradationActivity
+import com.namget.customline.line.LineActivity
+import com.namget.customline.main.MainActivity
+import com.namget.customline.scroll.ScrollActivity
+import com.namget.customline.seekbar.SeekbarActivity
 import kotlinx.android.synthetic.main.activity_select.*
 
 class SelectActivity : AppCompatActivity() {
@@ -29,6 +34,10 @@ class SelectActivity : AppCompatActivity() {
 
         startLine.setOnClickListener {
             val intent = Intent(this, LineActivity::class.java)
+            startActivity(intent)
+        }
+        startScroll.setOnClickListener {
+            val intent = Intent(this, ScrollActivity::class.java)
             startActivity(intent)
         }
 
