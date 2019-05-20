@@ -24,6 +24,9 @@ class ScrollActivity : AppCompatActivity() {
     val lineList: MutableList<LineItemInterface> = arrayListOf()
     var currentPosition = 0
     val MINUS_DISTANCE = 10
+    val handler: Handler by lazy {
+        Handler()
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,49 +38,51 @@ class ScrollActivity : AppCompatActivity() {
     }
 
     fun init() {
-        lineList.add(destinData(""))
-        lineList.add(LineData("", 1000))
-        lineList.add(destinData(""))
-        lineList.add(LineData("", 2000))
-        lineList.add(destinData(""))
         lineList.add(LineData("", 100))
+        lineList.add(destinData("", 90))
+        lineList.add(LineData("", 500))
+        lineList.add(destinData("", 90))
+        lineList.add(LineData("", 500))
+        lineList.add(destinData("", 90))
     }
 
     fun initView() {
-        for (i in lineList) {
+        for (i in lineList.reversed()) {
             if (i is LineData)
                 scrollNestedLinear.addView(createLineView(i.distance))
             if (i is destinData)
                 scrollNestedLinear.addView(destinationView())
         }
-        changeLength(lineList.size - currentPosition - 1, MINUS_DISTANCE)
+        changeLength(currentPosition, MINUS_DISTANCE)
     }
 
     /**
      * disTanceMinus or leftDistance
      */
     fun changeLength(position: Int, distanceMinus: Int) {
-        val handler = Handler().postDelayed(
+        handler.postDelayed(
             Runnable {
                 if (currentPosition < lineList.size) {
-                    val data = lineList.get(position)
+                    val data = lineList[position]
                     var distance = data.distance
-                    if (distance - distanceMinus > 0) {
+                    if (distance - distanceMinus >= 0) {
                         distance -= distanceMinus
                         data.distance = distance
                         Log.e("test", "distance ${distance}")
-                        val view = scrollNestedLinear.getChildAt(position)
+                        val view = scrollNestedLinear.getChildAt(lineList.size - 1 - position)
                         if (data is LineData) {
+                            Log.e("test1", "line")
                             view.lineLayout.layoutParams.height = distance
                             view.lineLayout.requestLayout()
                         } else if (data is destinData) {
+                            Log.e("test2", "destin")
                             view.itemDestinLayout.layoutParams.height = distance
                             view.itemDestinLayout.requestLayout()
                         }
                     } else {
                         currentPosition++
                     }
-                    changeLength(lineList.size - currentPosition - 1, MINUS_DISTANCE)
+                    changeLength(currentPosition, MINUS_DISTANCE)
                 }
             }, 1000
         )
@@ -107,5 +112,10 @@ class ScrollActivity : AppCompatActivity() {
         currentDot3.startAnimation(anim2)
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        currentDot2.clearAnimation()
+        currentDot3.clearAnimation()
+        handler.removeCallbacksAndMessages(null)
+    }
 }
