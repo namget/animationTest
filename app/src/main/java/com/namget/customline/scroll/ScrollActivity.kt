@@ -40,9 +40,9 @@ class ScrollActivity : AppCompatActivity() {
     fun init() {
         lineList.add(LineData("", 100))
         lineList.add(destinData("", 90))
-        lineList.add(LineData("", 500))
+        lineList.add(LineData("", 2000))
         lineList.add(destinData("", 90))
-        lineList.add(LineData("", 500))
+        lineList.add(LineData("", 2000))
         lineList.add(destinData("", 90))
     }
 

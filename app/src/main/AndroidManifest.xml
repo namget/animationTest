@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".scroll.ScrollActivity">
         </activity>
+        <activity android:name=".circleview.CircleActivity">
+        </activity>
 
     </application>
 
