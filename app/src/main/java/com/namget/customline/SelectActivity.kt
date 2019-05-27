@@ -3,6 +3,7 @@ package com.namget.customline
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.namget.customline.bgfloating.FloatingActivity
 import com.namget.customline.circleview.CircleActivity
 import com.namget.customline.gradation.GradationActivity
 import com.namget.customline.line.LineActivity
@@ -44,6 +45,10 @@ class SelectActivity : AppCompatActivity() {
 
         startCircle.setOnClickListener {
             val intent = Intent(this, CircleActivity::class.java)
+            startActivity(intent)
+        }
+        startFloating.setOnClickListener {
+            val intent = Intent(this, FloatingActivity::class.java)
             startActivity(intent)
         }
 

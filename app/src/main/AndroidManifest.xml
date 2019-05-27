@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.namget.customline">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -28,6 +30,15 @@
         </activity>
         <activity android:name=".circleview.CircleActivity">
         </activity>
+
+        <activity android:name=".bgfloating.FloatingActivity">
+        </activity>
+
+        <service
+                android:name=".bgfloating.FloatingService"
+                android:enabled="true"
+                android:permission="android.permission.SYSTEM_ALERT_WINDOW">
+        </service>
 
     </application>
 
