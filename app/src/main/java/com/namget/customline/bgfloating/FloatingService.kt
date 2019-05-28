@@ -18,19 +18,21 @@ class FloatingService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.e("myLog", "onStartCommand")
+        init()
         return super.onStartCommand(intent, flags, startId)
     }
 
 
     fun init() {
         Log.e("myLog", "init")
-        startService(Intent(applicationContext, FloatingService::class.java))
-        floatingHeadWindow = FloatingHeadWindow(applicationContext).apply {
-            create()
-            createLayoutParams()
-            show()
+        if (!::floatingHeadWindow.isInitialized) {
+            Log.e("myLog", "is not initalized")
+            floatingHeadWindow = FloatingHeadWindow(applicationContext).apply {
+                create()
+                createLayoutParams()
+                show()
+            }
         }
-
     }
 
 
@@ -49,7 +51,7 @@ class FloatingService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e("myLog", "onDestroy")
         floatingHeadWindow.hide()
+        Log.e("myLog", "onDestroy")
     }
 }

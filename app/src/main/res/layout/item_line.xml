@@ -7,7 +7,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="#000000"
+            android:background="@android:color/transparent"
             android:id="@+id/lineLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp">

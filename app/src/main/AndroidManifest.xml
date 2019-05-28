@@ -31,7 +31,8 @@
         <activity android:name=".circleview.CircleActivity">
         </activity>
 
-        <activity android:name=".bgfloating.FloatingActivity">
+        <activity android:name=".bgfloating.FloatingActivity"
+                  android:launchMode="singleTop">
         </activity>
 
         <service
