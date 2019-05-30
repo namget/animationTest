@@ -35,6 +35,9 @@
                   android:launchMode="singleTop">
         </activity>
 
+        <activity android:name=".recyclertest.RecyclerActivity">
+        </activity>
+
         <service
                 android:name=".bgfloating.FloatingService"
                 android:enabled="true"

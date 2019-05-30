@@ -16,7 +16,7 @@ import com.namget.customline.data.LineItemInterface
 import com.namget.customline.data.destinData
 import kotlinx.android.synthetic.main.activity_scroll.*
 import kotlinx.android.synthetic.main.item_current_dot2.*
-import kotlinx.android.synthetic.main.item_destionation_dot.view.*
+import kotlinx.android.synthetic.main.item_destination_dot.view.*
 import kotlinx.android.synthetic.main.item_line.view.*
 
 class ScrollActivity : AppCompatActivity() {
@@ -93,7 +93,7 @@ class ScrollActivity : AppCompatActivity() {
     }
 
 
-    fun destinationView(): View = LayoutInflater.from(this).inflate(R.layout.item_destionation_dot, null).apply {
+    fun destinationView(): View = LayoutInflater.from(this).inflate(R.layout.item_destination_dot, null).apply {
         layoutParams =
             ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
     }

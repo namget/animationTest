@@ -13,7 +13,7 @@ import com.namget.customline.data.LineData
 import com.namget.customline.data.LineItemInterface
 import com.namget.customline.data.destinData
 import com.namget.customline.databinding.ItemCurrentDotBinding
-import com.namget.customline.databinding.ItemDestionationDotBinding
+import com.namget.customline.databinding.ItemDestinationDotBinding
 import com.namget.customline.databinding.ItemLineBinding
 
 
@@ -50,7 +50,7 @@ class LineAdapter(val lineItem: MutableList<LineItemInterface>) :
 
     }
 
-    class DetinationDotHolder(val view: ItemDestionationDotBinding) : RecyclerView.ViewHolder(view.root) {
+    class DetinationDotHolder(val view: ItemDestinationDotBinding) : RecyclerView.ViewHolder(view.root) {
         fun bind(item: LineItemInterface) {
 
         }
@@ -112,9 +112,9 @@ class LineAdapter(val lineItem: MutableList<LineItemInterface>) :
                 return LineAdapter.LineHolder(view)
             }
             TYPE_DESTIN_DOT -> {
-                val view: ItemDestionationDotBinding = DataBindingUtil.inflate(
+                val view: ItemDestinationDotBinding = DataBindingUtil.inflate(
                     LayoutInflater.from(parent.context),
-                    R.layout.item_destionation_dot,
+                    R.layout.item_destination_dot,
                     parent,
                     false
                 )

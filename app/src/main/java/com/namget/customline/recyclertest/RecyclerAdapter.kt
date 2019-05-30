@@ -1,6 +1,5 @@
-package com.namget.customline.line
+package com.namget.customline.recyclertest
 
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import com.namget.customline.databinding.ItemDestinationDotBinding
 import com.namget.customline.databinding.ItemLineBinding
 
 
-class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
+class RecyclerAdapter(val lineItem: MutableList<LineItemInterface>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val TYPE_LINE = 0
@@ -26,7 +25,6 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
 
     interface ViewHolderInf {
         fun bind(item: LineItemInterface)
-        fun changeLength()
     }
 
     class LineHolder(val view: ItemLineBinding) : RecyclerView.ViewHolder(view.root),
@@ -43,21 +41,6 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
             }
         }
 
-        override fun changeLength() {
-            Log.e("test", "changeLenth")
-            val handler = Handler().postDelayed(
-                Runnable {
-                    if (distance - distanceMinus >= 0) {
-                        distance -= distanceMinus
-                        Log.e("test", "distance ${distance}")
-                        view.lineLayout.layoutParams.height = distance
-                        view.lineLayout.requestLayout()
-                        changeLength()
-                    }
-                }, 1000
-            )
-        }
-
     }
 
     fun getCurrentPosition(): Int = CURRENT_POSITION
@@ -70,23 +53,6 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
 
         override fun bind(item: LineItemInterface) {
 
-        }
-
-        override fun changeLength() {
-            Log.e("test", "changeLenth")
-            val handler = Handler().postDelayed(
-                Runnable {
-                    if (distance - distanceMinus > 0) {
-                        distance -= distanceMinus
-                        Log.e("test", "distance ${distance}")
-                        view.itemDestinLayout.layoutParams.height = distance
-                        view.itemDestinLayout.requestLayout()
-                        changeLength()
-                    } else {
-
-                    }
-                }, 1000
-            )
         }
     }
 
@@ -135,8 +101,6 @@ class LineAdapter2(val lineItem: MutableList<LineItemInterface>) :
         when (getItemViewType(position)) {
             TYPE_LINE -> {
                 (holder as LineHolder).bind(lineItem[position])
-                if (position == 0)
-                    holder.changeLength()
             }
             TYPE_DESTIN_DOT -> {
                 (holder as DetinationDotHolder).bind(lineItem[position])

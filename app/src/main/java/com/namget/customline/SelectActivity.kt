@@ -8,6 +8,7 @@ import com.namget.customline.circleview.CircleActivity
 import com.namget.customline.gradation.GradationActivity
 import com.namget.customline.line.LineActivity
 import com.namget.customline.main.MainActivity
+import com.namget.customline.recyclertest.RecyclerActivity
 import com.namget.customline.scroll.ScrollActivity
 import com.namget.customline.seekbar.SeekbarActivity
 import kotlinx.android.synthetic.main.activity_select.*
@@ -49,6 +50,11 @@ class SelectActivity : AppCompatActivity() {
         }
         startFloating.setOnClickListener {
             val intent = Intent(this, FloatingActivity::class.java)
+            startActivity(intent)
+        }
+
+        startRecycler.setOnClickListener {
+            val intent = Intent(this, RecyclerActivity::class.java)
             startActivity(intent)
         }
 
