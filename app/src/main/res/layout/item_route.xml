@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <View
+                android:id="@+id/topLine"
+                android:layout_width="4dp"
+                android:layout_height="70dp"
+                android:background="@android:color/holo_blue_bright"
+                app:layout_constraintBottom_toTopOf="@id/shadowDot"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></View>
+
+
+        <View
+                android:id="@+id/bottomLine"
+                android:layout_width="4dp"
+                android:layout_height="70dp"
+                android:background="@android:color/holo_blue_bright"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shadowDot"></View>
+
+
+        <ImageButton
+                android:id="@+id/shadowDot"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/item_circle_drawable"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/bottomLine"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topLine"></ImageButton>
+
+        <ImageButton
+                android:id="@+id/destinatinDot"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/item_circle_drawable"
+                app:layout_constraintBottom_toTopOf="@+id/bottomLine"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topLine"></ImageButton>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
