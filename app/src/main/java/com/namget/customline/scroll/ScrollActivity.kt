@@ -10,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import com.namget.customline.R
 import com.namget.customline.data.LineData
 import com.namget.customline.data.LineItemInterface
@@ -46,15 +47,88 @@ class ScrollActivity : AppCompatActivity() {
         lineList.add(destinData("", 90))
     }
 
+
     fun initView() {
-        for (i in lineList.reversed()) {
-            if (i is LineData)
-                scrollNestedLinear.addView(createLineView(i.distance))
-            if (i is destinData)
-                scrollNestedLinear.addView(destinationView())
+        var beforeId: Int = 0
+
+        val set = ConstraintSet()
+
+
+        //line
+        for (i in 0..6) {
+            val view = createConstraintView()
+            view.id = View.generateViewId()
+            scrollNestedLinear.addView(view)
         }
-        changeLength(currentPosition, MINUS_DISTANCE)
+        //current
+        val currentView = createCurrentView()
+        currentView.id = View.generateViewId()
+        scrollNestedLinear.addView(currentView)
+
+
+        set.clone(scrollNestedLinear)
+        for (i in 0..6) {
+            if (i == 0) {
+                set.connect(
+                    scrollNestedLinear.getChildAt(i).id,
+                    ConstraintSet.TOP,
+                    scrollMainView.id,
+                    ConstraintSet.TOP
+                )
+                set.connect(
+                    scrollNestedLinear.getChildAt(i).id,
+                    ConstraintSet.LEFT,
+                    scrollMainView.id,
+                    ConstraintSet.LEFT
+                )
+                set.connect(
+                    scrollNestedLinear.getChildAt(i).id,
+                    ConstraintSet.RIGHT,
+                    scrollMainView.id,
+                    ConstraintSet.RIGHT
+                )
+            } else {
+                set.connect(scrollNestedLinear.getChildAt(i).id, ConstraintSet.TOP, beforeId, ConstraintSet.BOTTOM)
+                set.connect(
+                    scrollNestedLinear.getChildAt(i).id,
+                    ConstraintSet.LEFT,
+                    scrollMainView.id,
+                    ConstraintSet.LEFT
+                )
+                set.connect(
+                    scrollNestedLinear.getChildAt(i).id,
+                    ConstraintSet.RIGHT,
+                    scrollMainView.id,
+                    ConstraintSet.RIGHT
+                )
+            }
+            beforeId = scrollNestedLinear.getChildAt(i).id
+        }
+
+        set.connect(currentView.id, ConstraintSet.BOTTOM, beforeId, ConstraintSet.BOTTOM, 0)
+        set.connect(currentView.id, ConstraintSet.LEFT, scrollMainView.id, ConstraintSet.LEFT)
+        set.connect(currentView.id, ConstraintSet.RIGHT, scrollMainView.id, ConstraintSet.RIGHT)
+
+
+
+        set.applyTo(scrollNestedLinear)
+
+        changeLength()
     }
+
+    fun setConstraint(set: ConstraintSet, viewId: Int, destinId: Int) {
+
+    }
+
+//    fun initView() {
+//        for (i in lineList.reversed()) {
+//            if (i is LineData)
+//                scrollNestedLinear.addView(createLineView(i.distance))
+//            if (i is destinData)
+//                scrollNestedLinear.addView(destinationView())
+//        }
+//        changeLength(currentPosition, MINUS_DISTANCE)
+//    }
 
     /**
      * disTanceMinus or leftDistance
@@ -88,6 +162,15 @@ class ScrollActivity : AppCompatActivity() {
         )
     }
 
+    fun createConstraintView(): View = LayoutInflater.from(this).inflate(R.layout.item_route, null).apply {
+        layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+    }
+
+    fun createCurrentView(): View = LayoutInflater.from(this).inflate(R.layout.item_current_dot2, null).apply {
+        layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 150)
+    }
+
+
     fun createLineView(distance: Int): View = LayoutInflater.from(this).inflate(R.layout.item_line, null).apply {
         layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, distance)
     }
@@ -96,6 +179,21 @@ class ScrollActivity : AppCompatActivity() {
     fun destinationView(): View = LayoutInflater.from(this).inflate(R.layout.item_destination_dot, null).apply {
         layoutParams =
             ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+    }
+
+    var margin = 0
+    fun changeLength() {
+        val handler = Handler().postDelayed(
+            Runnable {
+                val view = scrollNestedLinear.getChildAt(7)
+                val mp = (view.layoutParams as ViewGroup.MarginLayoutParams)
+                margin += 10
+                mp.bottomMargin = margin
+                view.layoutParams = mp
+                scrollNestedLinear.requestLayout()
+                changeLength()
+            }, 1000
+        )
     }
 
 
