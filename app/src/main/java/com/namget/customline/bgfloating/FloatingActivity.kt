@@ -1,10 +1,13 @@
 package com.namget.customline.bgfloating
 
 import android.annotation.TargetApi
+import android.content.ComponentName
 import android.content.Intent
+import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.Settings
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +20,18 @@ class FloatingActivity : AppCompatActivity() {
 
     private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1
     val TAG = "Floating"
+
+    private lateinit var floatingService: FloatingService
+    val onServiceConnection = object : ServiceConnection {
+        override fun onServiceDisconnected(name: ComponentName?) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = service as FloatingService.LocalBinder
+            floatingService = binder.getService()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +59,7 @@ class FloatingActivity : AppCompatActivity() {
         super.onStop()
         Log.e(TAG, "onStop")
     }
+
     override fun onStart() {
         super.onStart()
         Log.e(TAG, "onStart")
