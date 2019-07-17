@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.MeasureSpec
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -33,8 +32,11 @@ class GradationActivity : AppCompatActivity() {
 
     fun gradientView() {
 
-        val linearLayout = myLinearLayout
-        linearLayout.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+        val linearLayout = myLinearLayout.apply {
+            measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+            clipToOutline= true
+        }
+
         val observer = linearLayout.viewTreeObserver
         observer.addOnGlobalLayoutListener {
             Log.d("Log", "Height: " + linearLayout.height)
@@ -42,23 +44,33 @@ class GradationActivity : AppCompatActivity() {
         }
 
         val red: View = View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                weight = 0.1f
+            }
             background = ContextCompat.getDrawable(this@GradationActivity, android.R.color.holo_red_light)
         }
         val yellow: View = View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                weight = 0.1f
+            }
             background = ContextCompat.getDrawable(this@GradationActivity, android.R.color.holo_orange_light)
         }
         val green: View = View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                weight = 0.1f
+            }
             background = ContextCompat.getDrawable(this@GradationActivity, android.R.color.holo_green_light)
         }
         val blue: View = View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                weight = 0.1f
+            }
             background = ContextCompat.getDrawable(this@GradationActivity, android.R.color.holo_blue_light)
         }
         val white: View = View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                weight = 0.1f
+            }
             background = ContextCompat.getDrawable(this@GradationActivity, android.R.color.white)
         }
 

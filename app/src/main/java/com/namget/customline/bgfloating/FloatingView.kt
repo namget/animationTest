@@ -16,11 +16,8 @@ class FloatingView @JvmOverloads constructor(
     val def: Int = 0
 ) :
     FrameLayout(mContext, attributeSet, def), View.OnTouchListener {
-
-
     private val CLICK_DRAG_TOLERANCE =
         10f // Often, there will be a slight, unintentional, drag when the user taps the FAB, so we need to account for this.
-
     private var downRawX: Int = 0
     private var downRawY: Int = 0
     private var lastX: Int = 0
@@ -28,47 +25,35 @@ class FloatingView @JvmOverloads constructor(
     private lateinit var callbacks: Callbacks
     private val mGestureDetector: GestureDetector
     private var mTouchSlop: Int
-
-
     init {
         setOnTouchListener(this)
         mGestureDetector = GestureDetector(context, GestureListener())
         mTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
 
     }
-
     fun setCallbacks(callbacks: Callbacks) {
         this.callbacks = callbacks
     }
 
-
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
-
         val layoutParams = view.layoutParams
-
         mGestureDetector.onTouchEvent(motionEvent)
-
         val action = motionEvent.action
         val x = motionEvent.rawX.toInt()
         val y = motionEvent.rawY.toInt()
-
         if (action == MotionEvent.ACTION_DOWN) {
             downRawX = x
             downRawY = y
             lastX = x
             lastY = y
-
             return true // Consumed
-
         } else if (action == MotionEvent.ACTION_MOVE) {
             val nx = (x - lastX)
             val ny = (y - lastY)
             lastX = x
             lastY = y
-
             callbacks.onDrag(nx, ny)
             return true // Consumed
-
         } else if (action == MotionEvent.ACTION_UP) {
             Log.e("action", "ACTION_UP")
             callbacks.onDragEnd(x, y)
@@ -86,8 +71,6 @@ class FloatingView @JvmOverloads constructor(
             return true
         }
     }
-
-
     interface Callbacks {
         fun onDrag(dx: Int, dy: Int)
         fun onDragEnd(dx: Int, dy: Int)
